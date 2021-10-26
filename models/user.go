@@ -132,7 +132,8 @@ func (u *User) BeforeSave(tx *pop.Connection) error {
 // IsConfirmed checks if a user has already being
 // registered and confirmed.
 func (u *User) IsConfirmed() bool {
-	return u.ConfirmedAt != nil
+	// return u.ConfirmedAt != nil
+	return true
 }
 
 // SetRole sets the users Role to roleName

@@ -83,8 +83,8 @@ Adds a prefix to all table names.
 Migrations are not applied automatically, so you will need to run them after
 you've built gotrue.
 
-* If built locally: `./gotrue migrate`
-* Using Docker: `docker run --rm gotrue gotrue migrate`
+- If built locally: `./gotrue migrate`
+- Using Docker: `docker run --rm gotrue gotrue migrate`
 
 ### Logging
 
@@ -102,6 +102,7 @@ Controls what log levels are output. Choose from `panic`, `fatal`, `error`, `war
 If you wish logs to be written to a file, set `log_file` to a valid file path.
 
 ### Opentracing
+
 Currently, only the Datadog tracer is supported.
 
 ```properties
@@ -276,7 +277,10 @@ Default Content (if template is unavailable):
 ```html
 <h2>You have been invited</h2>
 
-<p>You have been invited to create a user on {{ .SiteURL }}. Follow this link to accept the invite:</p>
+<p>
+  You have been invited to create a user on {{ .SiteURL }}. Follow this link to
+  accept the invite:
+</p>
 <p><a href="{{ .ConfirmationURL }}">Accept the invite</a></p>
 ```
 
@@ -318,7 +322,10 @@ Default Content (if template is unavailable):
 ```html
 <h2>Confirm Change of Email</h2>
 
-<p>Follow this link to confirm the update of your email from {{ .Email }} to {{ .NewEmail }}:</p>
+<p>
+  Follow this link to confirm the update of your email from {{ .Email }} to {{
+  .NewEmail }}:
+</p>
 <p><a href="{{ .ConfirmationURL }}">Change Email</a></p>
 ```
 
@@ -328,7 +335,7 @@ Url of the webhook receiver endpoint. This will be called when events like `vali
 
 `WEBHOOK_SECRET` - `string`
 
-Shared secret to authorize webhook requests. This secret signs the [JSON Web Signature](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41) of the request. You *should* use this to verify the integrity of the request. Otherwise others can feed your webhook receiver with fake data.
+Shared secret to authorize webhook requests. This secret signs the [JSON Web Signature](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41) of the request. You _should_ use this to verify the integrity of the request. Otherwise others can feed your webhook receiver with fake data.
 
 `WEBHOOK_RETRIES` - `number`
 
@@ -347,7 +354,7 @@ For example to listen to all events, provide the values `validate,signup,login`.
 
 GoTrue exposes the following endpoints:
 
-* **GET /settings**
+- **GET /settings**
 
   Returns the publicly available settings for this gotrue instance.
 
@@ -364,7 +371,7 @@ GoTrue exposes the following endpoints:
   }
   ```
 
-* **POST /signup**
+- **POST /signup**
 
   Register a new user with an email and password.
 
@@ -387,7 +394,7 @@ GoTrue exposes the following endpoints:
   }
   ```
 
-* **POST /invite**
+- **POST /invite**
 
   Invites a new user with an email.
 
@@ -410,7 +417,7 @@ GoTrue exposes the following endpoints:
   }
   ```
 
-* **POST /verify**
+- **POST /verify**
 
   Verify a registration or a password recovery. Type can be `signup` or `recovery`
   and the `token` is a token returned from either `/signup` or `/recover`.
@@ -436,7 +443,7 @@ GoTrue exposes the following endpoints:
   }
   ```
 
-* **POST /recover**
+- **POST /recover**
 
   Password recovery. Will deliver a password recovery mail to the user based on
   email address.
@@ -453,7 +460,7 @@ GoTrue exposes the following endpoints:
   {}
   ```
 
-* **POST /token**
+- **POST /token**
 
   This is an OAuth2 endpoint that currently implements
   the password, refresh_token, and authorization_code grant types
@@ -482,7 +489,7 @@ GoTrue exposes the following endpoints:
   }
   ```
 
-* **GET /user**
+- **GET /user**
 
   Get the JSON object for the logged in user (requires authentication)
 
@@ -498,7 +505,7 @@ GoTrue exposes the following endpoints:
   }
   ```
 
-* **PUT /user**
+- **PUT /user**
 
   Update a user (Requires authentication). Apart from changing email/password, this
   method can be used to set custom user data.
@@ -527,7 +534,7 @@ GoTrue exposes the following endpoints:
   }
   ```
 
-* **POST /logout**
+- **POST /logout**
 
   Logout a user (Requires authentication).
 
@@ -536,4 +543,4 @@ GoTrue exposes the following endpoints:
 
 ## TODO
 
-* Schema for custom user data in config file
+- Schema for custom user data in config file
